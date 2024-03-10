@@ -1,0 +1,42 @@
+<section class="w-75 mx-auto shadow bg-main-light px-3 py-5 my-5">
+    <h1 class="text-capitalize text-center">change your data</h1>
+
+    <form action="" [formGroup]="changePersonalData" (submit)="handleForm()">
+
+        <div class="mb-2 w-75 mx-auto">
+            <label class="text-capitalize py-2" for="name">name :</label>
+            <input type="text" id="name" class="form-control" formControlName="name" #name>  
+            <div *ngIf="changePersonalData.get('name')?.errors &&(changePersonalData.get('name')?.touched || name.value.length > 0)" class="alert alert-danger">
+                <p *ngIf="changePersonalData.get('name')?.getError('required')" >Name Required</p>
+                <p *ngIf="changePersonalData.get('name')?.getError('minlength')">min length 3</p>
+                <p *ngIf="changePersonalData.get('name')?.getError('maxlength')">max length 20</p>
+            </div>  
+        </div>
+
+        <div class="mb-2 w-75 mx-auto">
+            <label class="text-capitalize py-2" for="email">email :</label>
+            <input type="email" id="email" class="form-control" formControlName="email" #email>    
+            <div *ngIf="changePersonalData.get('email')?.errors && (changePersonalData.get('email')?.touched || email.value.length > 0)" class="alert alert-danger">
+                <p *ngIf="changePersonalData.get('email')?.getError('required')" >Email Required</p>
+                <p *ngIf="changePersonalData.get('email')?.getError('email')">not valid email format</p>
+            </div> 
+        </div>
+
+        <div class="mb-2 w-75 mx-auto">
+            <label class="text-capitalize py-2" for="phone">phone :</label>
+            <input type="tel" id="phone" class="form-control" formControlName="phone" #phone>    
+            <div *ngIf="changePersonalData.get('phone')?.errors &&(changePersonalData.get('phone')?.touched || phone.value.length >0)" class="alert alert-danger" >
+                <p *ngIf="changePersonalData.get('phone')?.getError('required')" >phone Required</p>
+                <p *ngIf="changePersonalData.get('phone')?.getError('pattern')">not valid phone format</p>
+            </div> 
+        </div>
+        <div class="mb-2 w-75 mx-auto">
+        <p *ngIf="msgError" class="alert alert-danger">{{msgError}}</p>
+        <p *ngIf="msgSuccess" class="alert alert-success">{{msgSuccess}}</p>
+        </div>
+        <button [disabled]="changePersonalData.invalid" class="btn-main d-block ms-auto" >
+            <i *ngIf="isLoading" class="fas fa-spinner"></i>
+            change</button>
+
+    </form>
+</section>

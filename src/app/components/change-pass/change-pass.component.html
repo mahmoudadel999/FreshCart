@@ -1,0 +1,42 @@
+<section class="w-75 mx-auto shadow bg-main-light px-3 py-5 my-5">
+    <h1 class="text-capitalize text-center">change your password</h1>
+
+    <form action="" [formGroup]="changePass" (submit)="handleForm()">
+
+        <div class="mb-2 w-75 mx-auto">
+            <label class="text-capitalize py-2" for="currentPassword">current password :</label>
+            <input type="password" id="currentPassword" class="form-control" formControlName="currentPassword" #currentPassword>
+            <div *ngIf="changePass.get('currentPassword')?.errors &&(changePass.get('currentPassword')?.touched || currentPassword.value.length >0)" class="alert alert-danger">
+                <p *ngIf="changePass.get('currentPassword')?.getError('required')" >password Required</p>
+                <p *ngIf="changePass.get('currentPassword')?.getError('pattern')">not valid password format</p>
+            </div>     
+        </div>
+        <div class="mb-2 w-75 mx-auto">
+            <label class="text-capitalize py-2" for="password">password :</label>
+            <input type="password" id="password" class="form-control" formControlName="password" #password>
+            <div *ngIf="changePass.get('password')?.errors &&(changePass.get('password')?.touched || password.value.length >0)" class="alert alert-danger">
+                <p *ngIf="changePass.get('password')?.getError('required')" >password Required</p>
+                <p *ngIf="changePass.get('password')?.getError('pattern')">not valid password format</p>
+            </div>     
+        </div>
+
+        <div class="mb-2 w-75 mx-auto">
+            <label class="text-capitalize py-2" for="rePassword">re-password :</label>
+            <input type="password" id="rePassword" class="form-control" formControlName="rePassword" #repassword> 
+            <div *ngIf="changePass.get('rePassword')?.errors && (changePass.get('rePassword')?.touched || repassword.value.length >0)" class="alert alert-danger">
+                <p *ngIf="changePass.get('rePassword')?.getError('required')" >rePassword Required</p>
+                <p *ngIf="changePass.get('rePassword')?.getError('mismatch')"> passwords not match</p>
+            </div> 
+        </div>
+
+        <div class="mb-2 w-75 mx-auto">
+        <p *ngIf="msgError" class="alert alert-danger">{{msgError}}</p>
+        <p *ngIf="msgSuccess" class="alert alert-success">{{msgSuccess}}</p>
+        </div>
+        
+        <button [disabled]="changePass.invalid" class="btn-main d-block ms-auto" >
+            <i *ngIf="isLoading" class="fas fa-spinner"></i>
+            register</button>
+
+    </form>
+</section>

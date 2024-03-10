@@ -1,0 +1,6 @@
+a i {
+    transition: all 0.5s;
+}
+a:hover i {
+    color: var(--main-color);
+}

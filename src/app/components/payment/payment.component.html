@@ -1,0 +1,24 @@
+<section class="bg-main-light p-4 my-3 w-50 mx-auto">
+    <h1 class="text-capitalize text-center">payment</h1>
+    <form action="" [formGroup]="orderForm" >
+
+        <div class="mb-2">
+            <label class="text-capitalize py-2" for="details">details :</label>
+            <input type="text" id="details" class="form-control" formControlName="details" #details>    
+        </div>
+
+        <div class="mb-2">
+            <label class="text-capitalize py-2" for="phone">phone :</label>
+            <input type="tel" id="phone" class="form-control" formControlName="phone" #phone>
+   
+        </div>
+
+        <div class="mb-2">
+            <label class="text-capitalize py-2" for="city">city :</label>
+            <input type="text" id="city" class="form-control" formControlName="city" #city>
+        </div>
+
+        <button (click)="handleForm()" class="btn-main"> CheckOut</button>
+
+    </form>
+</section>

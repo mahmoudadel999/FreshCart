@@ -1,0 +1,9 @@
+nav{
+    z-index: 999;
+    transition: all 0.5s;
+}
+
+button.navbar-toggler{
+    border: unset;
+    box-shadow: none;
+}
